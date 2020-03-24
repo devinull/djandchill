@@ -1,7 +1,7 @@
 html {
 	background-color: #000;
 	color: #0F0;
-	overflow:
+	overflow:hidden;
 	font-family: consolas;
 }
 
@@ -29,7 +29,7 @@ body {
 .welcome {
 	height:8vh;
 	width:100vw;
-	overflow:hidden;
+	overflow:;
 }
 
 .stream {
