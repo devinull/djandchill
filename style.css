@@ -5,9 +5,14 @@ html {
 	font-family: consolas;
 }
 
+body {
+	margin:0px;
+	height:100vh;
+}
+
 .header {
 	text-align: center;
-	height: 1.5vh;
+	height: 2vh;
 	width: 98%;
 	padding: 5px;
 	margin:10 10 10 10;
@@ -22,16 +27,20 @@ html {
 }
 
 .welcome {
-	margin:1vw;
+	height:8vh;
+	width:100vw;
+	overflow:hidden;
 }
 
 .stream {
-	height: 55vh;
+	height: 53vh;
 	width: 99vw;
 }
 
 .chat {
-	height:20vh;
+	
+	bottom:0px;
+	height:35vh;
 	width: 99vw;
 }
 
