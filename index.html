@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title> dj and chill </title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+<div class="header">
+	<a href="index.html" style="float:left;"> djandchill.club </a>
+	<a href="about.html" style="float:right;"> about</a>
+</div>
+
+<div id="welcome" class="welcome">
+	Welcome to dj and chill.<br><br>
+	A safe and anonymous way to party from the comfort of your living room.<br>
+	Enter your party's extension below and we'll connect you.<br><br>
+	
+	<form id="party-form" onsubmit="return false;">
+    	<input style="width:40%;" type="text" id="userInput" />
+    	<input style="width:10%;" type="submit" onclick="loadStream()">
+	</form>
+</div>
+
+
+<iframe
+	id="stream"
+	class="stream"
+    src=""
+    height="720"
+    width="1280"
+    frameborder="0"
+    scrolling="no"
+    allowfullscreen="true">
+</iframe>
+
+<iframe 
+	id="chat"
+	class="chat"
+	src=""
+	frameborder="0"
+	scrolling="no"
+	allowfullscreen="true">
+</iframe>
+
+<script>
+function loadStream() {
+    var input = document.getElementById("userInput").value;
+    setURL(input);
+}
+</script>
+
+<script>
+	var delayInMilliseconds = 1000; //1second
+
+	function setURL(url){
+	$('welcome')
+	.css("display","none")
+	$('#stream')
+    .attr('src', 'https://player.twitch.tv/?channel='+url)
+    setTimeout(function() {
+   	$('#chat')
+    .attr('src', 'https://hack.chat/?'+url);
+}, delayInMilliseconds);
+   
+}
+</script> 
+
+
+
+
+</body>
+
+</html>

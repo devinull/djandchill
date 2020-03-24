@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title> dj and chill </title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+<div class="header">
+	<a href="index.html" style="float:left;"> djandchill.club </a>
+	<a href="about.html" style="float:right;"> about</a>
+</div>
+
+<iframe
+	id="stream"
+	class="stream"
+    src=""
+    height="720"
+    width="1280"
+    frameborder="0"
+    scrolling="no"
+    allowfullscreen="true">
+</iframe>
+
+<!-- Minnit Chat
+
+<iframe 
+	class="chat"
+	src="https://minnit.chat/djandchill?embed&dark&nickname=" 
+	style="border:none;" 
+	allowTransparency="true">
+</iframe>
+
+ -->
+
+<iframe 
+	id="chat"
+	class="chat"
+	src=""
+	frameborder="0"
+	scrolling="no"
+	allowfullscreen="true">
+</iframe>
+
+<script>
+	$('#stream')
+    .attr('src', 'https://player.twitch.tv/?channel=djandchill')
+    .on('load', loadFrame2);
+
+	function loadFrame2() {
+    	$('#chat').attr('src', 'https://hack.chat/?djandchill');
+	}
+</script> 
+
+
+
+
+</body>
+
+</html>
