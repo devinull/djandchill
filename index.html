@@ -12,15 +12,16 @@
 <div class="header">
 	<a href="index.html" style="float:left;"> djandchill.club </a>
 	<a href="about.html" style="float:right;"> about</a>
+	<a href="readme" style="float:right;margin-right:10px"> readme</a>
 </div>
 
-<div id="welcome" class="welcome">
-	Welcome to dj and chill.<br><br>
+<div id="welcome" class="welcome col-6">
+	Welcome to dj and chill.<br>
 	A safe and anonymous way to party from the comfort of your living room.<br>
 	Enter your party's extension below and we'll connect you.<br><br>
 	
-	<form id="party-form" onsubmit="return false;">
-    	<input style="width:40%;" type="text" id="userInput" />
+	<form id="party-form" class="col-6" onsubmit="return false;">
+    	<input style="width:20%;" type="text" id="userInput" placeholder="extension">
     	<input style="width:10%;" type="submit" onclick="loadStream()">
 	</form>
 </div>
@@ -57,15 +58,12 @@ function loadStream() {
 	var delayInMilliseconds = 1000; //1second
 
 	function setURL(url){
-	$('welcome')
-	.css("display","none")
 	$('#stream')
     .attr('src', 'https://player.twitch.tv/?channel='+url)
     setTimeout(function() {
    	$('#chat')
     .attr('src', 'https://hack.chat/?'+url);
-}, delayInMilliseconds);
-   
+}, delayInMilliseconds);  
 }
 </script> 
 

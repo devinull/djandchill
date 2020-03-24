@@ -7,15 +7,22 @@ html {
 
 .header {
 	text-align: center;
-	height: 5vh;
-	width: 99vw;
-	padding-top: 1%;
+	height: 1.5vh;
+	width: 98%;
+	padding: 5px;
+	margin:10 10 10 10;
+	border: 2px solid #0F0;
+
 }
 
 .header a {
 	text-decoration:none;
-	font-size: 1.5em;
+	font-size: 1em;
 	color: #0F0;
+}
+
+.welcome {
+	margin:1vw;
 }
 
 .stream {
@@ -24,12 +31,32 @@ html {
 }
 
 .chat {
-	height:20vh;
+	height:33vh;
 	width: 99vw;
 }
 
 .about {
-	width:50vw;
+	width:70vw;
 	margin:auto;
-	text-align:left;
+	text-align:justify;
+	padding-top:7vh;
 }
+
+
+input[type=text] {
+	border: 2px solid #0F0;
+	background-color:#000;
+	color:#0f0;
+	padding-left: 5px;
+}
+
+input[type=submit] {
+	border: 2px solid #0F0;
+	background-color:#000;
+	color:#0f0;
+}
+
+input {
+	font-family:consolas;
+}
+
