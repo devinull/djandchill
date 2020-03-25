@@ -4,6 +4,7 @@ html {
 	color: #0F0;
 	overflow:hidden;
 	font-family: consolas;
+	font-size:2em;
 }
 
 body {
@@ -12,9 +13,10 @@ body {
 }
 
 .header {
-	height: 1.3em;
+	height: 2.2em;
 	width: 94vw;
-	margin: 2em auto .5em auto;
+	margin: 1em auto .5em auto;
+	padding:0 0 0 0;
 	border: 2px solid #0F0;
 
 }
@@ -24,7 +26,7 @@ body {
 	text-decoration:none;
 	font-size: 1em;
 	color: #0F0;
-	padding:0 .5em 0 .5em;
+	padding:0 .4em 0 .4em;
 }
 
 .welcome {
@@ -63,7 +65,7 @@ body {
 }
 
 #tableStreams table {
-	width:60vw;
+	width:94vw;
 	margin:auto;
 	border-collapse: collapse;
 	margin-top: 2em;

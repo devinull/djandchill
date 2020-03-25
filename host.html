@@ -3,7 +3,8 @@
 
 <head>
 	<title> dj and chill | host </title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" media="screen and (min-width: 801px) and (max-width: 4098px)" href="style.css">
+	<link rel='stylesheet' media="screen and (min-width: 100px) and (max-width: 800px)" href='mobile.css'>
 	<link rel="icon" 
       type="image/png" 
       href="favicon.png">
@@ -26,7 +27,7 @@
 	<br><br>
 	</p>
 	<form id="partyForm" onsubmit="return false;">
-    	<input  type="text" id="room" placeholder="room title">
+    	<input  type="text" id="room" name="room title" required placeholder="room title">
     	<select id="duration" name="Event Duration">
     		<option value="24hr"> 24hr </option>
     		<option value="12hr"> 12hr </option>
@@ -34,10 +35,10 @@
     		<option value="3hr"> 3hr </option>
     		<option value="1hr"> 1hr </option>	
     	</select><br>
-    	<input  type="text" id="dj" placeholder="dj name"><br>
-    	<input  type="text" id="twitch" placeholder="twitch username"><br>
-    	<input  type="text" id="venmo" placeholder="@venmo-username"><br>
-    	<input  type="text" id="link" placeholder="link to website"><br>
+    	<input  type="text" id="dj" name="dj name" required placeholder="dj name"><br>
+    	<input  type="text" id="twitch" name="twitch username" required placeholder="twitch username"><br>
+    	<input  type="text" id="venmo" name="payment link" placeholder="@venmo-username"><br>
+    	<input  type="text" id="link" name="link" type="url" pattern="https?://.+" placeholder="https://linktobandcamp.etc"><br>
     	<input  type="submit" sendMessage()></input>
 	</form>
 </div>
