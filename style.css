@@ -6,29 +6,38 @@ html {
 }
 
 body {
-	margin:4px;
-	height:100vh;
+	margin:8px;
+	height:98vh;
 }
 
 .header {
-	text-align: center;
-	height: 2vh;
-	width: 100%;
-	padding: 5px;
-	margin:10 10 10 10;
+	height: 1.3em;
+	width: 94vw;
+	margin: 2em auto .5em auto;
 	border: 2px solid #0F0;
 
 }
 
 .header a {
+	float: right;
 	text-decoration:none;
 	font-size: 1em;
 	color: #0F0;
+	padding:0 .5em 0 .5em;
 }
 
 .welcome {
-	height:8vh;
-	width:100vw;
+	height:auto;
+	width:94vw;
+	margin:auto;
+	border: 2px solid #0F0;
+	overflow:;
+}
+
+.welcome p {
+	height:auto;
+	width:100%;
+	margin:10px;
 	overflow:;
 }
 
@@ -42,6 +51,7 @@ body {
 	bottom:0px;
 	height:35vh;
 	width: 99vw;
+	margin-bottom:1em;
 }
 
 .about {
@@ -51,21 +61,33 @@ body {
 	padding-top:7vh;
 }
 
+#tableStreams table {
+	width:94vw;
+	margin:auto;
+	border-collapse: collapse;
+	margin-top: 1em;
 
-input[type=text] {
-	border: 2px solid #0F0;
-	background-color:#000;
-	color:#0f0;
-	padding-left: 5px;
+
 }
 
-input[type=submit] {
+#tableStreams th, td {
+	height: 1em;
 	border: 2px solid #0F0;
-	background-color:#000;
-	color:#0f0;
+	text-align: left;
+	padding:0 5px 0 5px;
+}
+
+form {
+	margin:10px;
 }
 
 input {
 	font-family:consolas;
+	border: 2px solid #0F0;
+	background-color:#000;
+	color:#0f0;
+	padding-left: 5px;
+	padding-right:5px;
+	margin:auto;
 }
 

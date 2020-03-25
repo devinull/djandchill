@@ -15,37 +15,66 @@
 
 <body>
 
-<div id="welcome" class="welcome col-6">
+<div id="welcome" class="welcome">
+	<p>
 	Welcome to dj and chill.<br>
 	A safe and anonymous way to party from the comfort of your living room.<br>
 	Enter your party's extension below and we'll connect you.<br><br>
-	
-	<form id="party-form" class="col-6" onsubmit="return false;">
-    	<input style="width:20%;" type="text" id="userInput" placeholder="extension">
-    	<input style="width:10%;" type="submit" onclick="loadStream()">
+	</p>
+	<form id="party-form" onsubmit="return false;">
+    	<input  type="text" id="userInput" placeholder="extension">
+    	<input  type="submit" onclick="loadStream()">
 	</form>
 </div>
 
+<div id="tableStreams"></div>
 
-<iframe
-	id="stream"
-	class="stream"
-    src=""
-    height="720"
-    width="1280"
-    frameborder="0"
-    scrolling="no"
-    allowfullscreen="true">
-</iframe>
 
-<iframe 
-	id="chat"
-	class="chat"
-	src=""
-	frameborder="0"
-	scrolling="no"
-	allowfullscreen="true">
-</iframe>
+
+<!-- FIREBASE -->
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-firestore.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC6dyCCijNCaTDk-n7dlmIhIj1i-qzC3Yo",
+    authDomain: "djandchill.firebaseapp.com",
+    databaseURL: "https://djandchill.firebaseio.com",
+    projectId: "djandchill",
+    storageBucket: "djandchill.appspot.com",
+    messagingSenderId: "643042296070",
+    appId: "1:643042296070:web:ecfb523e2633f8bc049e87",
+    measurementId: "G-B57V62B699"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+  var db = firebase.firestore();
+
+	db.collection("streams")
+	    .onSnapshot(function(collection) {
+	    	var streams = [];
+	    	collection.forEach(function(doc){
+	    	console.log("Current data: ", doc.data());	
+	    	streams.push(doc.data());
+	    	})
+	        console.log("streams", streams)
+	        document.getElementById('tableStreams').innerHTML = json2table(streams, 'table');
+	    });
+
+</script>
+
+
+
+<!-- USER INPUT -->
 
 <script>
 function loadStream() {
@@ -67,8 +96,46 @@ function loadStream() {
 }
 </script> 
 
+<script>
+/* The function */
+
+function json2table(json, classes) {
+  var cols = Object.keys(json[0]);
+  
+  var headerRow = '';
+  var bodyRows = '';
+  
+  classes = classes || '';
+
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  //cols.map(function(col) {
+    headerRow += '<th>' + capitalizeFirstLetter(cols[0]) + '</th>';
+  //});
+
+  json.map(function(row) {
+    bodyRows += '<tr>';
+
+    //cols.map(function(colName) {
+      bodyRows += '<td>' + '<a href=' + row['url'] + '?' + row['twitchId'] + '>' + row['title'] + '</a>' + '</td>';
+    //})
+
+    bodyRows += '</tr>';
+  });
+
+  return '<table class="' +
+         classes +
+         '"><thead><tr>' +
+         headerRow +
+         '</tr></thead><tbody>' +
+         bodyRows +
+         '</tbody></table>';
+}
 
 
+</script>
 
 </body>
 

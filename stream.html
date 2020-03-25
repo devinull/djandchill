@@ -14,6 +14,23 @@
 	<a href="about.html" style="float:right;"> about</a>
 </div>
 
+<div id="info">
+
+	<div id="title">
+
+	</div>
+
+	<div id="dj">
+	</div>
+
+	<div id="venmo">
+	</div>
+
+	<div id="link">
+	</div>
+
+</div>
+
 <iframe
 	id="stream"
 	class="stream"
@@ -25,17 +42,6 @@
     allowfullscreen="true">
 </iframe>
 
-<!-- Minnit Chat
-
-<iframe 
-	class="chat"
-	src="https://minnit.chat/djandchill?embed&dark&nickname=" 
-	style="border:none;" 
-	allowTransparency="true">
-</iframe>
-
- -->
-
 <iframe 
 	id="chat"
 	class="chat"
@@ -45,14 +51,67 @@
 	allowfullscreen="true">
 </iframe>
 
+<!-- FIREBASE -->
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-firestore.js"></script>
+
 <script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC6dyCCijNCaTDk-n7dlmIhIj1i-qzC3Yo",
+    authDomain: "djandchill.firebaseapp.com",
+    databaseURL: "https://djandchill.firebaseio.com",
+    projectId: "djandchill",
+    storageBucket: "djandchill.appspot.com",
+    messagingSenderId: "643042296070",
+    appId: "1:643042296070:web:ecfb523e2633f8bc049e87",
+    measurementId: "G-B57V62B699"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+  var db = firebase.firestore();
+
+	
+	var urlParams = new URLSearchParams(location.search);
+	// FIND A BETTER WAY TO DEAL WITH REMOVING =
+	var twitchId = urlParams.toString().replace('=', ''); 
+
 	$('#stream')
-    .attr('src', 'https://player.twitch.tv/?channel=djandchill')
+    .attr('src', `https://player.twitch.tv/?channel=${twitchId}`)
     .on('load', loadFrame2);
 
 	function loadFrame2() {
-    	$('#chat').attr('src', 'https://hack.chat/?djandchill');
+    	$('#chat').attr('src', `https://hack.chat/?${twitchId}`);
 	}
+
+	// get collection once
+
+	var docRef = db.collection("streams").doc(twitchId)
+	console.log('twitchId', twitchId);
+
+	docRef.get().then(function(doc) {
+	    if (doc.exists) {
+	        console.log("Document data:", doc.data());
+	        document.getElementById('title').innerHTML = doc.data().title;
+	        document.getElementById('dj').innerHTML = doc.data().dj;
+	        document.getElementById('venmo').innerHTML = doc.data().venmo;
+	        document.getElementById('link').innerHTML = doc.data().link;
+	    } else {
+	        // doc.data() will be undefined in this case
+	        console.log("No such document!");
+	    }
+	}).catch(function(error) {
+	    console.log("Error getting document:", error);
+	});
+
 </script> 
 
 
