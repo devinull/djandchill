@@ -62,10 +62,10 @@ body {
 }
 
 #tableStreams table {
-	width:94vw;
+	width:60vw;
 	margin:auto;
 	border-collapse: collapse;
-	margin-top: 1em;
+	margin-top: 2em;
 
 
 }
@@ -75,6 +75,14 @@ body {
 	border: 2px solid #0F0;
 	text-align: left;
 	padding:0 5px 0 5px;
+	color:#FF0;
+	
+}
+
+#tableStreams a {
+	text-decoration:none;
+	color:#FF0;
+
 }
 
 form {
@@ -82,12 +90,22 @@ form {
 }
 
 input {
+	width:30%;
 	font-family:consolas;
 	border: 2px solid #0F0;
 	background-color:#000;
 	color:#0f0;
 	padding-left: 5px;
 	padding-right:5px;
-	margin:auto;
+	margin:.5em;
 }
 
+select {
+	font-family:consolas;
+	border: 2px solid #0F0;
+	background-color:#000;
+	color:#0f0;
+	padding-left: 5px;
+	padding-right:5px;
+	margin:.5em;
+}

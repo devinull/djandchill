@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title> dj and chill | host </title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+<div class="header">
+	<a href="index.html" style="float:left;"> djandchill.club </a>
+	<a href="about.html" style="float:right;"> about</a>
+</div>
+
+<div id="welcome" class="welcome">
+	<p>
+	Fill out this form with the required information to start hosting your own room.
+
+	<br><br>
+	</p>
+	<form id="partyForm" onsubmit="return false;">
+    	<input  type="text" id="room" placeholder="room title">
+    	<select id="duration" name="Event Duration">
+    		<option value="24hr"> 24hr </option>
+    		<option value="12hr"> 12hr </option>
+    		<option value="6hr"> 6hr </option>
+    		<option value="3hr"> 3hr </option>
+    		<option value="1hr"> 1hr </option>	
+    	</select><br>
+    	<input  type="text" id="dj" placeholder="dj name"><br>
+    	<input  type="text" id="twitch" placeholder="twitch username"><br>
+    	<input  type="text" id="password" placeholder="room password"><br>
+    	<input  type="text" id="venmo" placeholder="@venmo-username"><br>
+    	<input  type="text" id="link" placeholder="link to website"><br>
+    	<input  type="submit" sendMessage()></input>
+	</form>
+</div>
+
+<!-- FIREBASE -->
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-firestore.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC6dyCCijNCaTDk-n7dlmIhIj1i-qzC3Yo",
+    authDomain: "djandchill.firebaseapp.com",
+    databaseURL: "https://djandchill.firebaseio.com",
+    projectId: "djandchill",
+    storageBucket: "djandchill.appspot.com",
+    messagingSenderId: "643042296070",
+    appId: "1:643042296070:web:ecfb523e2633f8bc049e87",
+    measurementId: "G-B57V62B699"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+  var db = firebase.firestore();
+
+
+		document.getElementById('partyForm').addEventListener('submit', formSubmit);
+
+		//Submit form
+		function formSubmit(e) {
+		  e.preventDefault();
+		  // Get Values from the DOM
+		  let title = document.querySelector('#room').value;
+		  let dj = document.querySelector('#dj').value;
+		  let twitchId = document.querySelector('#twitch').value;
+		  let password = document.querySelector('#password').value;
+		  let venmo = document.querySelector('#venmo').value;
+		  let link = document.querySelector('#link').value;
+		  let duration = document.querySelector('#duration').value;
+		  
+		  var currentTime = new Date();
+		  currentTime.setHours(duration.replace('hr',''));
+		  console.log(currentTime.toTimeString())
+		  console.log(duration.replace('hr',''))
+		  let endDate = firebase.firestore.Timestamp.fromDate(currentTime.getTime());
+		// Add a new document in collection "cities"
+		db.collection("streams").doc().set({
+		    title: title,
+		    dj: dj,
+		    twitchId: twitchId,
+		    password: password,
+		    venmo: venmo,
+		    link: link,
+		    endDate: endDate
+
+		})
+		.then(function() {
+		    console.log("Document successfully written!");
+		})
+		.catch(function(error) {
+		    console.error("Error writing document: ", error);
+		});
+	}
+	
+
+	var urlParams = new URLSearchParams(location.search);
+	// FIND A BETTER WAY TO DEAL WITH REMOVING =
+	var twitchId = urlParams.toString().replace('=', ''); 
+
+	$('#stream')
+    .attr('src', `https://player.twitch.tv/?channel=${twitchId}`)
+    .on('load', loadFrame2);
+
+	function loadFrame2() {
+    	$('#chat').attr('src', `https://hack.chat/?${twitchId}`);
+	}
+
+	// get collection once
+
+	var docRef = db.collection("streams").doc(twitchId)
+	console.log('twitchId', twitchId);
+
+	docRef.get().then(function(doc) {
+	    if (doc.exists) {
+	        console.log("Document data:", doc.data());
+	        document.getElementById('title').innerHTML = doc.data().title;
+	        document.getElementById('dj').innerHTML = doc.data().dj;
+	        document.getElementById('venmo').innerHTML = doc.data().venmo;
+	        document.getElementById('link').innerHTML = doc.data().link;
+	    } else {
+	        // doc.data() will be undefined in this case
+	        console.log("No such document!");
+	    }
+	}).catch(function(error) {
+	    console.log("Error getting document:", error);
+	});
+
+</script> 
+
+
+
+
+</body>
+
+</html>

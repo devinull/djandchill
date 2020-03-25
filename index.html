@@ -8,9 +8,10 @@
 </head>
 
 <div class="header">
-	<a href="index.html" style="float:left;"> djandchill.club </a>
+	<a href="index.html" class="code" style="float:left;"> djandchill.club </a>
 	<a href="about.html" style="float:right;"> about</a>
-	<a href="readme" style="float:right;margin-right:10px"> readme</a>
+	<a href="readme.html" style="float:right;margin-right:10px"> readme</a>
+	<a href="host.html" style="float:right;margin-right:10px"> host</a>
 </div>
 
 <body>
@@ -58,8 +59,9 @@
   firebase.analytics();
 
   var db = firebase.firestore();
-
+  let now = new Date()
 	db.collection("streams")
+		.where('endDate', '>', firebase.firestore.Timestamp.fromDate(new Date()))
 	    .onSnapshot(function(collection) {
 	    	var streams = [];
 	    	collection.forEach(function(doc){
@@ -112,7 +114,7 @@ function json2table(json, classes) {
   }
 
   //cols.map(function(col) {
-    headerRow += '<th>' + capitalizeFirstLetter(cols[0]) + '</th>';
+    headerRow += '<th>' + 'room' + '</th>';
   //});
 
   json.map(function(row) {
@@ -137,6 +139,8 @@ function json2table(json, classes) {
 
 </script>
 
+
+<script src="scripts.js"></script>
 </body>
 
 </html>
