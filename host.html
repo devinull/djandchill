@@ -4,6 +4,9 @@
 <head>
 	<title> dj and chill | host </title>
 	<link rel="stylesheet" href="style.css">
+	<link rel="icon" 
+      type="image/png" 
+      href="favicon.png">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
@@ -12,6 +15,8 @@
 <div class="header">
 	<a href="index.html" style="float:left;"> djandchill.club </a>
 	<a href="about.html" style="float:right;"> about</a>
+	<a href="readme.html" style="float:right;margin-right:10px"> readme</a>
+	<a href="host.html" style="float:right;margin-right:10px"> host</a>
 </div>
 
 <div id="welcome" class="welcome">
@@ -31,7 +36,6 @@
     	</select><br>
     	<input  type="text" id="dj" placeholder="dj name"><br>
     	<input  type="text" id="twitch" placeholder="twitch username"><br>
-    	<input  type="text" id="password" placeholder="room password"><br>
     	<input  type="text" id="venmo" placeholder="@venmo-username"><br>
     	<input  type="text" id="link" placeholder="link to website"><br>
     	<input  type="submit" sendMessage()></input>
@@ -76,7 +80,6 @@
 		  let title = document.querySelector('#room').value;
 		  let dj = document.querySelector('#dj').value;
 		  let twitchId = document.querySelector('#twitch').value;
-		  let password = document.querySelector('#password').value;
 		  let venmo = document.querySelector('#venmo').value;
 		  let link = document.querySelector('#link').value;
 		  let duration = document.querySelector('#duration').value;
@@ -85,13 +88,12 @@
 		  currentTime.setHours(duration.replace('hr',''));
 		  console.log(currentTime.toTimeString())
 		  console.log(duration.replace('hr',''))
-		  let endDate = firebase.firestore.Timestamp.fromDate(currentTime.getTime());
+		  let endDate = currentTime;
 		// Add a new document in collection "cities"
 		db.collection("streams").doc().set({
 		    title: title,
 		    dj: dj,
 		    twitchId: twitchId,
-		    password: password,
 		    venmo: venmo,
 		    link: link,
 		    endDate: endDate
@@ -99,6 +101,8 @@
 		})
 		.then(function() {
 		    console.log("Document successfully written!");
+		     window.open(`https://www.djandchill.club/stream?${twitchId}`, '_self')
+
 		})
 		.catch(function(error) {
 		    console.error("Error writing document: ", error);
@@ -140,6 +144,14 @@
 
 </script> 
 
+
+<script>
+	var delayInMilliseconds = 1000; //1second
+
+	function setURL(url){
+    window.open(`https://www.djandchill.club/stream?${url}`, '_self') 
+}
+</script> 
 
 
 

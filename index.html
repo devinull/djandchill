@@ -4,6 +4,9 @@
 <head>
 	<title> dj and chill </title>
 	<link rel="stylesheet" href="style.css">
+	<link rel="icon" 
+      type="image/png" 
+      href="favicon.png">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
@@ -82,6 +85,7 @@
 function loadStream() {
     var input = document.getElementById("userInput").value;
     setURL(input);
+    console.log('load stream working')
 }
 </script>
 
@@ -89,12 +93,7 @@ function loadStream() {
 	var delayInMilliseconds = 1000; //1second
 
 	function setURL(url){
-	$('#stream')
-    .attr('src', 'https://player.twitch.tv/?channel='+url)
-    setTimeout(function() {
-   	$('#chat')
-    .attr('src', 'https://hack.chat/?'+url);
-}, delayInMilliseconds);  
+    window.open(`https://www.djandchill.club/stream?${url}`, '_self') 
 }
 </script> 
 
