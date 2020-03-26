@@ -4,6 +4,7 @@
 <head>
 	<title> dj and chill | host </title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Anonymous+Pro&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="style.css">
 	
 	<link rel="icon" 
@@ -23,12 +24,17 @@
 
 <div id="welcome" class="welcome">
 	<p>
-	Fill out this form with the required information to start hosting your own room.
+	fill out the form below with the required information to start hosting your own room.
 
 	<br><br>
 	</p>
+	<div id="formContainer">
 	<form id="partyForm" onsubmit="return false;">
-    	<input  type="text" id="room" name="room title" required placeholder="room title">
+    	<input  type="text" id="room" name="room title" required placeholder="room title"><br>
+    	<input  type="text" id="dj" name="dj name" required placeholder="dj name"><br>
+    	<input  type="text" id="twitch" name="twitch username" required placeholder="twitch username"><br>
+    	<input  type="text" id="venmo" name="payment link" placeholder="@venmo-username"><br>
+    	<input  type="text" id="link" name="link" type="url" pattern="https?://.+" placeholder="https://linktobandcamp.etc"><br>
     	<select id="duration" name="Event Duration">
     		<option value="24hr"> 24hr </option>
     		<option value="12hr"> 12hr </option>
@@ -36,12 +42,9 @@
     		<option value="3hr"> 3hr </option>
     		<option value="1hr"> 1hr </option>	
     	</select><br>
-    	<input  type="text" id="dj" name="dj name" required placeholder="dj name"><br>
-    	<input  type="text" id="twitch" name="twitch username" required placeholder="twitch username"><br>
-    	<input  type="text" id="venmo" name="payment link" placeholder="@venmo-username"><br>
-    	<input  type="text" id="link" name="link" type="url" pattern="https?://.+" placeholder="https://linktobandcamp.etc"><br>
     	<input  type="submit" sendMessage()></input>
 	</form>
+</div>
 </div>
 
 <!-- FIREBASE -->

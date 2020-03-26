@@ -10,7 +10,7 @@ html {
 	background-color: #000;
 	color: #0F0;
 	overflow-y:scroll;
-	font-family: consolas;
+	font-family: 'Anonymous Pro', monospace;
 }
 
 body {
@@ -30,9 +30,14 @@ body {
 .header a {
 	float: right;
 	text-decoration:none;
-	font-size: 1em;
+	font-size: 1.2em;
 	color: #0F0;
-	padding:0 .2em 0 .2em;
+	padding:0 .3em 0 .3em;
+}
+
+.header a:hover {
+	text-decoration:none;
+	color: #FF0;
 }
 
 .welcome {
@@ -45,8 +50,8 @@ body {
 
 .welcome p {
 	height:auto;
-	width:100%;
-	margin:10px;
+	width:94%;
+	margin:1em;
 	overflow:;
 }
 
@@ -79,8 +84,8 @@ body {
 
 }
 
-#tableStreams th, td {
-	height: 1em;
+#tableStreams th, td{
+	height: 1.5em;
 	border: 2px solid #0F0;
 	text-align: left;
 	padding:0 5px 0 5px;
@@ -94,29 +99,39 @@ body {
 
 }
 
-form {
-	margin:10px;
+#tableStreams a:hover{
+	text-decoration:none;
+	color:#F00;
+
+}
+
+#formContainer {
+	width:90%;
+	margin:auto;
+}
+
+#party-form {
+	width:90%;
+	margin:auto;
 }
 
 input {
-	width:30%;
+	width:100%;
 	font-family:consolas;
 	border: 2px solid #0F0;
 	background-color:#000;
 	color:#0f0;
-	padding-left: 5px;
-	padding-right:5px;
-	margin:.5em;
+	margin:0 0 1em 0;
+	
 }
+
 
 select {
 	font-family:consolas;
 	border: 2px solid #0F0;
 	background-color:#000;
 	color:#0f0;
-	padding-left: 5px;
-	padding-right:5px;
-	margin:.5em;
+	margin:0 0 1em 0;
 	}
 }
 
@@ -132,7 +147,7 @@ html {
 	background-color: #000;
 	color: #0F0;
 	overflow:hidden;
-	font-family: consolas;
+	font-family: 'Anonymous Pro', monospace;
 }
 
 body {
@@ -153,7 +168,12 @@ body {
 	text-decoration:none;
 	font-size: 1em;
 	color: #0F0;
-	padding:0 .5em 0 .5em;
+	padding:.2em .5em 0 .5em;
+}
+
+.header a:hover {
+	text-decoration:none;
+	color: #FF0;
 }
 
 .welcome {
@@ -196,23 +216,24 @@ body {
 	margin:auto;
 	border-collapse: collapse;
 	margin-top: 2em;
-
-
 }
 
 #tableStreams th, td {
-	height: 1em;
+	height: 1.5em;
 	border: 2px solid #0F0;
 	text-align: left;
 	padding:0 5px 0 5px;
 	color:#FF0;
-	
 }
 
 #tableStreams a {
 	text-decoration:none;
 	color:#FF0;
+}
 
+#tableStreams a:hover{
+	text-decoration:none;
+	color:#F00;
 }
 
 form {
@@ -220,7 +241,7 @@ form {
 }
 
 input {
-	width:30%;
+	width:50%;
 	font-family:consolas;
 	border: 2px solid #0F0;
 	background-color:#000;
@@ -229,6 +250,16 @@ input {
 	padding-right:5px;
 	margin:.5em;
 }
+
+input[type="submit"] {
+	box-sizing: content-box;
+}
+
+input[type="submit"]:hover {
+	color:#FF0;
+	border-color:#FF0;
+}
+
 
 select {
 	font-family:consolas;
