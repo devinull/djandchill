@@ -9,7 +9,7 @@ and (max-width : 812px)
 html {
 	background-color: #000;
 	color: #0F0;
-	overflow:hidden;
+	overflow:auto;
 	font-family: 'Anonymous Pro', monospace;
 }
 
@@ -121,8 +121,13 @@ input {
 	border: 2px solid #0F0;
 	background-color:#000;
 	color:#0f0;
-	margin:0 0 1em 0;
+	margin:0 auto 1em auto;
+	box-sizing: border-box;
 	
+}
+
+input[type="submit"] {
+	box-sizing: border-box;
 }
 
 
