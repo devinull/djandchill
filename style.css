@@ -9,7 +9,7 @@ and (max-width : 812px)
 html {
 	background-color: #000;
 	color: #0F0;
-	overflow-y:scroll;
+	overflow:hidden;
 	font-family: 'Anonymous Pro', monospace;
 }
 
