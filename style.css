@@ -7,9 +7,11 @@ and (max-width : 812px)
 {
 
 html {
+	height:100vh;
 	background-color: #000;
 	color: #0F0;
-	overflow:auto;
+	overflow-y:auto;
+	overflow-x:hidden;
 	font-family: 'Anonymous Pro', monospace;
 }
 
@@ -60,15 +62,31 @@ body {
 	overflow:;
 }
 
+.info {
+	width: 94vw;
+	margin:auto;
+	padding:1em;
+	text-align:center;
+}
+
+.infoBox {
+
+	border: 2px solid #0F0;
+	margin: 0 .5em 0 .5em;
+	padding: 0 .5em 0 .5em;
+
+}
+
+
 .stream {
-	height: 53vh;
+	height: 60vh;
 	width: 99vw;
 }
 
 .chat {
 	
-	bottom:0px;
-	height:35vh;
+	bottom:100vh;
+	height:33vh;
 	width: 99vw;
 	margin-bottom:1em;
 }
@@ -203,15 +221,30 @@ body {
 	overflow:;
 }
 
+.info {
+	width: 94vw;
+	margin:auto;
+	padding:1em;
+	text-align:center;
+}
+
+.infoBox {
+
+	border: 2px solid #0F0;
+	margin: 0 .5em 0 .5em;
+	padding: 0 .5em 0 .5em;
+
+}
+
 .stream {
-	height: 53vh;
+	height: 60vh;
 	width: 99vw;
 }
 
 .chat {
 	
 	bottom:0px;
-	height:35vh;
+	height:33vh;
 	width: 99vw;
 	margin-bottom:1em;
 }

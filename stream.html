@@ -21,20 +21,23 @@
 	<a href="host.html" style="float:right;margin-right:10px"> host</a>
 </div>
 
-<div id="info">
+<div id="info" class="info">
 
-	<div id="title">
+	<span  class="infoBox">
+		Room: <span id="title"></span>
+	</span>
 
-	</div>
+	<span class="infoBox">
+		DJ:  <span id="dj"></span>
+	</span>
 
-	<div id="dj">
-	</div>
+	<span  class="infoBox">
+		Venmo:  <span id="venmo"></span>
+	</span>
 
-	<div id="venmo">
-	</div>
-
-	<div id="link">
-	</div>
+	<span class="infoBox">
+		Link: <span id="link"></span>
+	</span>
 
 </div>
 
@@ -101,8 +104,26 @@
 
 	// get collection once
 
-	var docRef = db.collection("streams").doc(twitchId)
-	console.log('twitchId', twitchId);
+ 	let now = new Date()
+	db.collection("streams")
+		.where('endDate', '>', firebase.firestore.Timestamp.fromDate(new Date()))
+	    .onSnapshot(function(collection) {
+	    	var streams = [];
+	    	collection.forEach(function(doc){
+	    	console.log("Current data: ", doc.data().twitchId);	
+	   		if (doc.data().twitchId === twitchId) {
+	   			console.log(doc.id)
+	   			getStreamData(doc.id)
+	   		}
+	    	})
+	        console.log("streams", streams)
+	        document.getElementById('tableStreams').innerHTML = json2table(streams, 'table');
+	    });
+
+
+	function getStreamData(id) {
+	var docRef = db.collection("streams").doc(id)
+	console.log('id:', id);
 
 	docRef.get().then(function(doc) {
 	    if (doc.exists) {
@@ -118,6 +139,7 @@
 	}).catch(function(error) {
 	    console.log("Error getting document:", error);
 	});
+}
 
 </script> 
 
