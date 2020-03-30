@@ -10,7 +10,8 @@ html {
 	height:100vh;
 	background-color: #000;
 	color: #0F0;
-	overflow:hidden;
+	overflow-x:hidden;
+	overflow-y:scroll;
 	font-family: 'Anonymous Pro', monospace;
 }
 
