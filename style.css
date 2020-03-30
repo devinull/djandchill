@@ -17,7 +17,7 @@ html {
 
 body {
 	margin:8px;
-	height:98vh;
+	height:100vh;
 }
 
 .header {
@@ -81,13 +81,13 @@ body {
 
 
 .stream {
-	height: 60vh;
+	height: 55vh;
 	width: 99vw;
 }
 
 .chat {
-	
-	bottom:100vh;
+	position:fixed;
+	bottom:.2em;
 	height:33vh;
 	width: 99vw;
 	margin-bottom:1em;
@@ -172,6 +172,7 @@ select {
 
 @media screen 
 and (min-width : 813px) 
+and (max-width : 4000px)
 
 {
 
@@ -239,13 +240,14 @@ body {
 }
 
 .stream {
-	height: 60vh;
+	height: 55vh;
 	width: 99vw;
 }
 
 .chat {
-	
-	bottom:0px;
+	position:fixed;
+	left: 0px;
+	bottom:.2em;
 	height:33vh;
 	width: 99vw;
 	margin-bottom:1em;
